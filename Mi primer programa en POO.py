@@ -1,6 +1,6 @@
 # mi primera programación de POO
 class Personaje:
-    def _init_(self, nombre, fuerza, intelecto, vida):
+    def __init__(self, nombre, fuerza, intelecto, vida):
         self.nombre = nombre
         self.fuerza = fuerza
         self.intelecto = intelecto
@@ -31,10 +31,15 @@ class Personaje:
         daño = self.daño(enemigo)
         enemigo.vida = enemigo.vida - daño
         print(self.nombre, "ha realizado", daño, "puntos de daño a", enemigo.nombre)
-        print("la vida de", enemigo.nombre, "es", enemigo.vida)
+        if enemigo.esta_vivo():
+            print("la vida de", enemigo.nombre, "es", enemigo.vida)
+        else:
+            enemigo.morir()
+
+
 
 
 mi_personaje = Personaje("Yueron", 10, 30, 200)
-mi_enemigo = Personaje("Enemigo yue", 9, 2, 199)
+mi_enemigo = Personaje("Enemigo yue", 9, 2, 5)
 mi_personaje.atacar(mi_enemigo)
 mi_enemigo.atributos()
